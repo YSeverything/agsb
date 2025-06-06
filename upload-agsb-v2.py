@@ -1,39 +1,39 @@
 #!/usr/bin/env python3   #！/usr/bin/env python3
 # -*- coding: utf-8 -*-# -*-编码：utf-8 -*-
 
-import   进口 os   进口的
-import   进口 sys   导入系统
-import   进口 json   进口json
-import   进口 random   进口随机
-import   进口 time   导入的时间
-import   进口 shutil   进口shutil
-import   进口 re   进口再保险
-import   进口 base64   进口base64
-import   进口 socket   进口套接字
-import   进口 subprocess   导入子流程
-import   进口 platform   进口平台
-from   从 datetime 从datetime导入datetimeimport datetime
-import   进口 uuid   进口uuid
-from   从 pathlib    从pathlib导入路径import Path
-import   进口 urllib.request   进口urllib.request
-import   进口 ssl   进口ssl
-import   进口 tempfile   进口tempfile
-import   进口 argparse   进口argparse
+import   进口   进口 os   进口的
+import   进口   进口 sys   导入系统
+import   进口   进口 json   进口json
+import   进口   进口 random   进口随机
+import   进口   进口 time   导入的时间
+import   进口   进口 shutil   进口shutil
+import   进口   进口 re   进口再保险
+import   进口   进口 base64   进口base64
+import   进口   进口 socket   进口套接字
+import   进口   进口 subprocess   导入子流程
+import   进口   进口 platform   进口平台
+from   从   从 datetime 从datetime导入datetimeimport datetime
+import   进口   进口 uuid   进口uuid
+from   从   从 pathlib    从pathlib导入路径import Path
+import   进口   进口 urllib.request   请求   进口urllib.request   请求
+import   进口   进口 ssl   进口ssl
+import   进口   进口 tempfile   进口tempfile
+import   进口   进口 argparse   进口argparse
 
 # 全局变量
-INSTALL_DIR = Path.home   首页   首页() / ".agsb"  # 用户主目录下的隐藏文件夹，避免root权限
+INSTALL_DIR = Path.home   首页   首页   首页() / ".agsb"  # 用户主目录下的隐藏文件夹，避免root权限
 CONFIG_FILE = INSTALL_DIR / CONFIG_FILE = INSTALL_DIR / “config.json”"config.json"
-SB_PID_FILE = INSTALL_DIR / SB_PID_FILE = INSTALL_DIR / “sbpid.log”"sbpid.log"
-ARGO_PID_FILE = INSTALL_DIR / ARGO_PID_FILE = INSTALL_DIR / “sbargopid.log”"sbargopid.log"
+SB_PID_FILE = INSTALL_DIR / SB_PID_FILE = INSTALL_DIR / “sbpid.log”   日志”"sbpid.log"
+ARGO_PID_FILE = INSTALL_DIR / ARGO_PID_FILE = INSTALL_DIR / “sbargopid.log”   日志”"sbargopid.log"
 LIST_FILE = INSTALL_DIR / LIST_FILE = INSTALL_DIR / “list.txt”"list.txt"
-LOG_FILE = INSTALL_DIR / LOG_FILE = INSTALL_DIR / “argo.log”"argo.log"
-DEBUG_LOG = INSTALL_DIR / DEBUG_LOG = INSTALL_DIR / “python_debug.log”"python_debug.log"
+LOG_FILE = INSTALL_DIR / LOG_FILE = INSTALL_DIR / “argo.log”   日志”"argo.log"
+DEBUG_LOG = INSTALL_DIR / DEBUG_LOG = INSTALL_DIR / “python_debug.log”   日志”"python_debug.log"
 CUSTOM_DOMAIN_FILE = INSTALL_DIR / "custom_domain.txt" # 存储最终使用的域名
 
 # ====== 全局可配置参数（可直接在此处修改） ======
-USER_NAME = "everything"         # 用户名
-UUID = "5b3c35ae-ff3c-407e-8884-a485d7002f16"                     # UUID，留空则自动生成
-PORT = 49956                   # Vmess端口，留空或0则自动生成
+USER_NAME = "everything"   “一切”         # 用户名
+UUID = "5b3c35ae-ff3c-407e-8884-a485d7002f16"“5 b3c35ae - ff3c - 407 - e - 8884 - a485d7002f16”                     # UUID，留空则自动生成
+PORT = 49999                  # Vmess端口，留空或0则自动生成
 DOMAIN = "sg3.yxys.cloudns.be"                   # 域名，留空则自动获取
 CF_TOKEN = "eyJhIjoiMDI0ZDQzMGM0ZTIyYTVhZjczYzdjNzI3MTBkZWUwZjEiLCJ0IjoiODNkMWU2ZDMtY2E1ZS00NTZhLWIyNzEtNDQ4YjY0M2RiMGQyIiwicyI6Ik5EWTNOV1kwWkRNdE9EVmxOQzAwTURGa0xXRTBOR010TUdJMk9Ea3lPV000T1RRMSJ9"                 # Cloudflare Token，留空则用Quick Tunnel
 # =========================================
