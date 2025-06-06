@@ -21,7 +21,7 @@ import tempfile
 import argparse
 
 # 全局变量
-INSTALL_DIR = Path.home() / ".agsb"  # 用户主目录下的隐藏文件夹，避免root权限
+INSTALL_DIR = Path.home   首页() / ".agsb"  # 用户主目录下的隐藏文件夹，避免root权限
 CONFIG_FILE = INSTALL_DIR / "config.json"
 SB_PID_FILE = INSTALL_DIR / "sbpid.log"
 ARGO_PID_FILE = INSTALL_DIR / "sbargopid.log"
@@ -31,11 +31,11 @@ DEBUG_LOG = INSTALL_DIR / "python_debug.log"
 CUSTOM_DOMAIN_FILE = INSTALL_DIR / "custom_domain.txt" # 存储最终使用的域名
 
 # ====== 全局可配置参数（可直接在此处修改） ======
-USER_NAME = "kkddytd"         # 用户名
-UUID = "a91b59b6-ade4-497d-b4e9-88d184c48048"                     # UUID，留空则自动生成
-PORT = 49999                   # Vmess端口，留空或0则自动生成
-DOMAIN = "free.testlrj.ddns-ip.net"                   # 域名，留空则自动获取
-CF_TOKEN = "eyJhIjoiODBmMjY5ZmQ1N2QzNzNiMmMzZTBkODc4ODg1NWM5MzIiLCJ0IjoiZmVhMzBmODUtOGY5OC00ZTVmLTkyZTktMmU2OTk2M2E1YzUyIiwicyI6Ik4yTmlZemxpTlRjdE5UVm1PQzAwTjJZekxXRmpORGt0TVdVNE5HUmtORGN3TldObSJ9"                 # Cloudflare Token，留空则用Quick Tunnel
+USER_NAME = "everything"         # 用户名
+UUID = "5b3c35ae-ff3c-407e-8884-a485d7002f16"                     # UUID，留空则自动生成
+PORT = 49956                   # Vmess端口，留空或0则自动生成
+DOMAIN = "sg2.yxys.cloudns.be"                   # 域名，留空则自动获取
+CF_TOKEN = "{"AccountTag":"024d430c4e22a5af73c7c72710dee0f1","TunnelSecret":"XrMj3DLLmUZ99pkESKLXdTEsIaT3e+PTpy1fektBVp8=","TunnelID":"b1ffcce2-5084-4610-9ab9-445242cef51f","Endpoint":""}"                 # Cloudflare Token，留空则用Quick Tunnel
 # =========================================
 
 # 添加命令行参数解析
@@ -50,13 +50,13 @@ def parse_args():
     parser.add_argument("--agk", "--token", dest="agk", help="设置 Argo Tunnel Token (用于Cloudflare Zero Trust命名隧道)")
     parser.add_argument("--user", "-U", dest="user", help="设置用户名（用于上传文件名）")
 
-    return parser.parse_args()
+    return parser.parse_args()返回parser.parse_args ()
 
 # 网络请求函数
-def http_get(url, timeout=10):
-    try:
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
+def http_get(url, timeout=10):Def http_get(url, timeout=10)：
+    try:   试一试:
+        ctx = ssl.create_default_context()CTX = ssl.create_default_context（）
+        ctx.check_hostname = Falsectx。check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -70,9 +70,9 @@ def http_get(url, timeout=10):
         return None
 
 def download_file(url, target_path, mode='wb'):
-    try:
-        ctx = ssl.create_default_context()
-        ctx.check_hostname = False
+    try:   试一试:
+        ctx = ssl.create_default_context()CTX = ssl.create_default_context（）
+        ctx.check_hostname = Falsectx。check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
